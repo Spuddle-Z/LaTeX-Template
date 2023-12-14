@@ -1,0 +1,135 @@
+\documentclass[hyperref, UTF8]{ctexart}
+\usepackage{amsmath, amssymb, amsthm, enumitem, float, framed, geometry, graphicx, latexsym, listings, multirow, titlesec}
+\usepackage[strict]{changepage} % 提供一个 adjustwidth 环境
+\usepackage[dvipsnames,svgnames]{xcolor}
+
+\titleformat{\section}{\centering\Large\bfseries}{第\,\chinese{section}\,章}{1em}{}
+\geometry{a4paper,centering,scale=0.8}
+\parindent 0in
+\parskip 12pt % 调整段间距
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=0pt,topsep=-12pt} %设置item间距
+
+% --------------------定义新符号--------------------
+\newcommand{\ldsq}{[\![}    % 左双括号
+\newcommand{\rdsq}{]\!]}    % 右双括号
+% ------------------定义新符号结束------------------
+
+% --------------------代码块设置--------------------
+\lstset{
+language=c++,  %代码语言使用的是c++
+frame=shadowbox, %把代码用带有阴影的框圈起来
+rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色
+keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体
+commentstyle=\color{red!10!green!70}\textit,    % 设置代码注释的颜色
+showstringspaces=false,%不显示代码字符串中间的空格标记
+numbers=left, % 显示行号
+numberstyle=\tiny,    % 行号字体
+stringstyle=\ttfamily, % 代码字符串的特殊格式
+breaklines=true, %对过长的代码自动换行
+extendedchars=false,  %解决代码跨页时，章节标题，页眉等汉字不显示的问题
+%   escapebegin=\begin{CJK*},escapeend=\end{CJK*},      % 代码中出现中文必须加上，否则报错
+texcl=true
+}
+% ------------------代码块设置结束------------------
+
+% --------------------高亮框设置--------------------
+\definecolor{blueshade}{rgb}{0.95,0.95,1} % 蓝色文本框，竖线颜色设为 DarkBlue
+\definecolor{brownshade}{rgb}{0.99,0.97,0.93} % 莫兰迪棕色，竖线颜色设为 BurlyWood
+\definecolor{redshade}{rgb}{1.00,0.90,0.90}% 红色文本框，竖线颜色设为 LightCoral
+\definecolor{greyshade}{rgb}{0.93,0.93,0.93} % 浅灰色，竖线颜色设为 DarkGrey
+% 注意行末需要把空格注释掉，不然画出来的方框会有空白竖线
+% ------------------******-------------------
+\newenvironment{formal}{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{DarkBlue}\vrule width 2pt}%
+{\color{blueshade}\vrule width 4pt}%
+\colorbox{blueshade}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}%
+}
+{%
+\vspace{12pt}\end{adjustwidth}\endMakeFramed%
+}
+% ------------------******-------------------
+\newenvironment{example}{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{BurlyWood}\vrule width 2pt}%
+{\color{brownshade}\vrule width 4pt}%
+\colorbox{brownshade}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}%
+}
+{%
+\vspace{12pt}\end{adjustwidth}\endMakeFramed%
+}
+% ------------------******-------------------
+\newenvironment{warning}{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{LightCoral}\vrule width 2pt}%
+{\color{redshade}\vrule width 4pt}%
+\colorbox{redshade}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}%
+}
+{%
+\vspace{12pt}\end{adjustwidth}\endMakeFramed%
+}
+% ------------------******-------------------
+\newenvironment{unimportant}{%
+\def\FrameCommand{%
+\hspace{1pt}%
+{\color{DarkGrey}\vrule width 2pt}%
+{\color{greyshade}\vrule width 4pt}%
+\colorbox{greyshade}%
+}%
+\MakeFramed{\advance\hsize-\width\FrameRestore}%
+\noindent\hspace{-4.55pt}% disable indenting first paragraph
+\begin{adjustwidth}{}{7pt}%
+\vspace{2pt}%
+}
+{%
+\vspace{12pt}\end{adjustwidth}\endMakeFramed%
+}
+% ------------------高亮框设置结束------------------
+
+\begin{document}
+
+\begin{center}
+{\Huge \bf Note Template}\\
+{\LARGE Name}\\
+\end{center}
+
+
+{\centering\section{Chapter 1}}
+
+\subsection{高亮框}
+\subsubsection{陈述定义}
+\begin{formal}
+    这里可以\textbf{陈述定义}。
+\end{formal}
+\subsubsection{举例}
+\begin{example}
+    这里可以\textbf{举例}。
+\end{example}
+\subsubsection{总结或注意}
+\begin{warning}
+    这里可以\textbf{总结或注意}。
+\end{warning}
+\subsubsection{附加信息}
+\begin{unimportant}
+    这里可以\textbf{附加信息}。
+\end{unimportant}
+
+\end{document}
